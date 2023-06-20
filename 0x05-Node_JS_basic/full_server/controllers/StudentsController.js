@@ -3,8 +3,8 @@ const read = require("../utils");
 class StudentsController {
   static getAllStudents(req, res) {
     res.statusCode = 200;
-    res.write('This is the list of our students\n');
     read.readDatabase(process.argv[2].toString()).then((output) => {
+      res.write('This is the list of our students\n');
       const outString = output.slice(0, -1);
       res.end(outString);
     }).catch(() => {
